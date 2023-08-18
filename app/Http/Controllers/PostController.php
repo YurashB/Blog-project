@@ -57,4 +57,20 @@ class PostController extends Controller
         Post::query()->find(1)->delete();
         Post::withTrashed()->find(1)->restore();
     }
+
+    public function firstOrCreate() {
+        $post = Post::query()->find(1);
+        $anotherPost = [
+            'title' => 'another firstOrCreate',
+            'content' => 'firstOrCreate',
+            'image' => 'firstOrCreate',
+            'likes' => 1777,
+            'is_published' => 1,
+        ];
+
+        $myPost = Post::query()->firstOrCreate(['title' => 'another firstOrCreate'],
+            $anotherPost);
+
+        dd('finish');
+    }
 }
