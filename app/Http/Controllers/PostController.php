@@ -9,8 +9,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::query()->where('id', ">", 4)->get();
-        dd($post);
+        $posts = Post::all();
+        return view('posts', compact('posts'));
     }
 
     public function create()
