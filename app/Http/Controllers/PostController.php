@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-
-        return view('post.index', compact('posts'));
+        $posts = Post::query()->find(1);
+        $tag = Tag::find(1);
+        dd($tag->posts);
+        //return view('post.index', compact('posts'));
     }
 
     public function create()
