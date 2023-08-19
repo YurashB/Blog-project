@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -32,7 +31,8 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    public function update(Post $post) {
+    public function update(Post $post)
+    {
         $data = \request()->validate([
             'title' => 'string',
             'content' => 'string',
@@ -43,24 +43,29 @@ class PostController extends Controller
         return redirect()->route('post.show', $post->id);
     }
 
-    public function show(Post $post) {
-       return view('post.show', compact('post'));
+    public function show(Post $post)
+    {
+        return view('post.show', compact('post'));
     }
 
-    public function edit(Post $post) {
+    public function edit(Post $post)
+    {
         return view('post.edit', compact('post'));
     }
 
-    public function delete() {
+    public function delete()
+    {
         Post::withTrashed()->find(1)->restore();
     }
 
-    public function destroy(Post $post) {
+    public function destroy(Post $post)
+    {
         $post->delete();
         return redirect()->route('post.index');
     }
 
-    public function firstOrCreate() {
+    public function firstOrCreate()
+    {
         $post = Post::query()->find(1);
         $anotherPost = [
             'title' => 'another firstOrCreate',

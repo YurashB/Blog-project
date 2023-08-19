@@ -20,4 +20,8 @@ class Post extends Model
             'likes',
             'is_published',
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
 }
