@@ -6,15 +6,18 @@
             @method('patch')
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" id="title" aria-describedby="Title" value="{{$post->title}}">
+                <input type="text" class="form-control" name="title" id="title" aria-describedby="Title"
+                       value="{{$post->title}}">
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea type="text" class="form-control" name="content" id="content" aria-describedby="Content">{{$post->content}}</textarea>
+                <textarea type="text" class="form-control" name="content" id="content"
+                          aria-describedby="Content">{{$post->content}}</textarea>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input type="text" class="form-control" name="image" id="image" aria-describedby="Image" value="{{$post->image}}">
+                <input type="text" class="form-control" name="image" id="image" aria-describedby="Image"
+                       value="{{$post->image}}">
             </div>
             <label for="category">Category</label>
             <select class="form-select" aria-label="Default select example" id="category" name="category_id">
@@ -24,9 +27,8 @@
 
                         value="{{$category->id}}">{{$category->title}}</option>
                 @endforeach
-            </select>
-            <div><p></p></div>
-            <button type="submit" class="btn btn-primary">Update</button>
+                <div><p></p></div>
+                <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection

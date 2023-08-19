@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostTag;
+use App\Models\Tag;
+use Illuminate\Console\View\Components\Task;
 
 class PostController extends Controller
 {
@@ -15,8 +18,9 @@ class PostController extends Controller
 
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('post.create', compact('categories'));
+        return view('post.create', compact('categories', 'tags'));
 
     }
 
@@ -26,10 +30,16 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'image' => 'string',
-            'category_id' => ''
+            'category_id' => '',
+            'tags_id' => ''
         ]);
+        $tags = $data['tags_id'];
+        unset($data['tags_id']);
 
-        Post::query()->create($data);
+        $post = Post::query()->create($data);
+        $post->tags()->attach($tags);
+
+
         return redirect()->route('post.index');
     }
 

@@ -20,7 +20,12 @@
                 @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->title}}</option>
                 @endforeach
-
+            </select>
+            <label for="tags">Tags</label>
+            <select class="form-select" multiple aria-label="Tags" id="tags" name="tags_id[]">
+                @foreach($tags as $tag)
+                    <option value="{{$tag->id}}">{{$tag->title}}</option>
+                @endforeach
             </select>
             <div><p></p></div>
             <button type="submit" class="btn btn-primary">Create</button>
