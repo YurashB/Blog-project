@@ -17,8 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/posts", 'PostController@index')->name("posts.index");
-Route::get('/posts/create', 'PostController@create');
+Route::get("/posts", 'PostController@index')->name("post.index");
+Route::get('/posts/create', 'PostController@create')->name('post.store');
+
+Route::post('/posts/create', 'PostController@store')->name('post.create');
+Route::get('/posts/{post}', 'PostController@show')->name('post.show');
+Route::get('/posts/{post}/edit', 'PostController@edit')->name('post.edit');
+Route::patch('/posts/{post}', 'PostController@update')->name('post.update');
+Route::delete('/posts/{post}', 'PostController@destroy')->name('post.delete');
+
 Route::get('/posts/update', 'PostController@update');
 Route::get('/posts/delete', 'PostController@delete');
 Route::get('/posts/first-or-create', 'PostController@firstOrCreate');

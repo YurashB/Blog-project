@@ -10,52 +10,54 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts', compact('posts'));
+
+        return view('post.index', compact('posts'));
     }
 
     public function create()
     {
-        $postArr = [
-            [
-                'title' => 'title of post from phpstorm',
-                'content' => 'some content',
-                'image' => 'some image',
-                'likes' => 223,
-                'is_published' => 1,
-            ],
-            [
-                'title' => 'title of post from phpstorm 2',
-                'content' => 'some content 2',
-                'image' => 'some image 2',
-                'likes' => 12,
-                'is_published' => 1,
-            ],
-        ];
-
-        foreach ($postArr as $post) {
-            dump($post);
-           Post::query()->create($post);
-        }
-
+        return view('post.create');
 
     }
 
-    public function update() {
-        $post = Post::query()->find(11);
-        $post->update([
-            'title' => 'updated',
-            'content' => 'updated',
-            'image' => 'updated',
-            'likes' => 1,
-            'is_published' => 0,
+    public function store()
+    {
+        $data = \request()->validate([
+            'title' => 'string',
+            'content' => 'string',
+            'image' => 'string',
         ]);
 
-        dd('updated');
+        Post::query()->create($data);
+        return redirect()->route('post.index');
+    }
+
+    public function update(Post $post) {
+        $data = \request()->validate([
+            'title' => 'string',
+            'content' => 'string',
+            'image' => 'string',
+        ]);
+
+        $post->update($data);
+        return redirect()->route('post.show', $post->id);
+    }
+
+    public function show(Post $post) {
+       return view('post.show', compact('post'));
+    }
+
+    public function edit(Post $post) {
+        return view('post.edit', compact('post'));
     }
 
     public function delete() {
-        Post::query()->find(1)->delete();
         Post::withTrashed()->find(1)->restore();
+    }
+
+    public function destroy(Post $post) {
+        $post->delete();
+        return redirect()->route('post.index');
     }
 
     public function firstOrCreate() {
