@@ -15,6 +15,14 @@
                 <label for="image" class="form-label">Image</label>
                 <input type="text" class="form-control" name="image" id="image" aria-describedby="Image">
             </div>
+            <label for="category">Category</label>
+            <select class="form-select" aria-label="Default select example" id="category" name="category_id">
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->title}}</option>
+                @endforeach
+
+            </select>
+            <div><p></p></div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>

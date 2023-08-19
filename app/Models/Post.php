@@ -10,22 +10,19 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
     protected $table = "posts";
 
-    // Equals protected $guarded= false;
-    protected $fillable = [
-            'title',
-            'content',
-            'image',
-            'likes',
-            'is_published',
-    ];
+    protected $guarded = false;
 
-    public function category() {
+
+    public function category()
+    {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function tags(){
+    public function tags()
+    {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
 }
