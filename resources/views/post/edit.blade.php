@@ -27,8 +27,20 @@
 
                         value="{{$category->id}}">{{$category->title}}</option>
                 @endforeach
-                <div><p></p></div>
-                <button type="submit" class="btn btn-primary">Update</button>
+            </select>
+            <label for="tags">Tags</label>
+            <select class="form-select" multiple aria-label="Tags" id="tags" name="tags_id[]">
+                @foreach($tags as $tag)
+                    <option
+                        @foreach($post->tags as $postTag)
+                            {{$tag->id === $postTag->id ? 'selected' : ''}}
+                        @endforeach
+
+                        value="{{$tag->id}}">{{$tag->title}}</option>
+                @endforeach
+            </select>
+            <div><p></p></div>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection
