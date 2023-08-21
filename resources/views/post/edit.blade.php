@@ -8,16 +8,25 @@
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="Title"
                        value="{{$post->title}}">
+                @error('title')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
                 <textarea type="text" class="form-control" name="content" id="content"
                           aria-describedby="Content">{{$post->content}}</textarea>
+                @error('content')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
                 <input type="text" class="form-control" name="image" id="image" aria-describedby="Image"
                        value="{{$post->image}}">
+                @error('image')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <label for="category">Category</label>
             <select class="form-select" aria-label="Default select example" id="category" name="category_id">
