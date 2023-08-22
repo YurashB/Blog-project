@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Posts'], function (){
+Route::group(['namespace' => 'Posts'], function () {
     Route::get("/posts", 'IndexController')->name("post.index");
     Route::get('/posts/create', 'CreateController')->name('post.store');
 
@@ -28,6 +28,12 @@ Route::group(['namespace' => 'Posts'], function (){
     Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 
     Route::get('/posts/update', 'UpdateController');
+});
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],  function () {
+    Route::group(['namespace' => 'Posts'], function () {
+        Route::get('/posts', 'IndexController')->name('admin.post.index');
+    });
 });
 
 Route::get('/posts/first-or-create', 'PostController@firstOrCreate');
