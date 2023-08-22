@@ -4,7 +4,7 @@
     <div>
         <div>
             <button type="button" class="btn btn-primary">
-                <a href="{{route('post.create')}}" class="text-white">Add new post</a>
+                <a href="{{route('admin.post.create')}}" class="text-white">Add new post</a>
             </button>
         </div>
         @foreach($posts as $post)

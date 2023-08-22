@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Posts'], function () {
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],  function () {
     Route::group(['namespace' => 'Posts'], function () {
         Route::get('/posts', 'IndexController')->name('admin.post.index');
+        Route::get('/posts/create', 'CreateController')->name('admin.post.create');
     });
 });
 
