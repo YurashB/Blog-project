@@ -19,6 +19,9 @@
                         <a class="nav-link" href="{{route('post.index')}}">Posts</a>
                         <a class="nav-link" href="{{route('about.index')}}">About</a>
                         <a class="nav-link" href="{{route('contacts.index')}}">Contacts</a>
+                        @can('view', auth()->user())
+                        <a class="nav-link" href="{{route('admin.post.index')}}">Admin</a>
+                        @endcan
                     </div>
                 </div>
             </div>
