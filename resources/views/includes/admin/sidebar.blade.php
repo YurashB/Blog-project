@@ -3,7 +3,7 @@
         data-accordion="false">
         <li class="nav-header">Admin panel</li>
         <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a class="nav-link">
                 <i class="nav-icon fas fa-align-justify"></i>
                 <p>
                     Posts
